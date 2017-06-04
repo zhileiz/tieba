@@ -1,0 +1,160 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require foundation_and_overrides
+
+ */
+ @charset "utf-8";
+ @font-face {
+	font-family: 'localsans-win-light';
+	src: local('Microsoft YaHei Light'), local('Microsoft JhengHei');
+}
+@font-face {
+	font-family: 'localsans-win';
+	src: local('Microsoft YaHei');
+}
+@font-face {
+	font-family: 'localsans-win-bold';
+	font-weight: bold;
+	src: local('Microsoft YaHei Bold'), local('Microsoft YaHei');
+}
+@font-face {
+	font-family: 'localsans-mac-light';
+	src: local('PingFangSC-Light'), local('HiraginoSansGB-W3');
+}
+@font-face {
+	font-family: 'localsans-mac';
+	src: local('PingFangSC-Regular'), local('HiraginoSansGB-W3');
+}
+@font-face {
+	font-family: 'localsans-mac-bold';
+	src: local('PingFangSC-Semibold'), local('HiraginoSansGB-W6');
+}
+
+@font-face {
+	font-family: WyueLogo;
+	src: local('â˜º'), font-url('/assets/WyueLogo.otf') format('opentype');
+}
+
+@font-face {
+	font-family: T-AaFangMeng;
+	src: local('â˜º'), font-url('/assets/AaFangMeng.otf') format('opentype');
+}
+@font-face {
+	font-family: T-AaDonuts;
+	src: local('â˜º'), font-url('/assets/AaDonuts.otf') format('opentype');
+}
+@font-face {
+	font-family: T-WenYue-GuDianFangSongTi-THFT;
+	src: local('â˜º'), font-url('/assets/WenYue-GuDianFangSongTi-THFT.otf') format('opentype');
+}
+@font-face {
+	font-family: T-WenYue-HouXianDaiTi-W2-75;
+	src: local('â˜º'), font-url('/assets/WenYue-HouXianDaiTi-W2-75.otf') format('opentype');
+}
+@font-face {
+	font-family: T-WenYue-HouXianDaiTi-W4-75;
+	src: local('â˜º'), font-url('/assets/WenYue-HouXianDaiTi-W4-75.otf') format('opentype');
+}
+@font-face {
+	font-family: T-WenYue-XinQingNianTi-NC-W8;
+	src: local('â˜º'), font-url('/assets/WenYue-XinQingNianTi-NC-W8.otf') format('opentype');
+}
+@font-face {
+	font-family: T-WenYue-GuDianMingChaoTi;
+	src: local('â˜º'), font-url('/assets/Title-WenYue-GuDianMingChaoTi.otf') format('opentype');
+}
+@font-face {
+	font-family: T-WenYue-QingLongTi;
+	src: local('â˜º'), font-url('Title-WenYue-QingLongTi.otf') format('opentype');
+}
+@font-face {
+	font-family: T-WenYue-XinQingNianTi;
+	src: local('â˜º'), font-url('/assets/Title-WenYue-XinQingNianTi.otf') format('opentype');
+}
+@font-face {
+	font-family: T-WyueGutiFangsong;
+	src: local('â˜º'), font-url('/assets/Title-WyueGutiFangsong.otf') format('opentype');
+}
+@font-face {
+	font-family: T-TpldKhangXiDict;
+	src: local('â˜º'), font-url('/assets/Title-TpldKhangXiDict.otf') format('opentype');
+}
+@font-face {
+	font-family: T-TpldYiFengScripture;
+	src: local('â˜º'), font-url('/assets/Title-TpldYiFengScripture.otf') format('opentype');
+}
+@font-face {
+	font-family: T-TpldLehBienLehsho;
+	src: local('â˜º'), font-url('/assets/Title-TpldLehBienLehsho.otf') format('opentype');
+}
+ @font-face {
+   font-family: wenyue;
+   src: local('â˜º'), font-url('/assets/wenyue.otf') format('opentype');
+ }
+ html{
+   height:100%;
+   width:100%;
+ }
+
+body{
+  margin:0px;
+}
+
+.top-bar{
+  background-color: crimson;
+}
+.menu{
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.3);
+  padding-left: 21%;
+  background: #333;
+  li{
+    font-size: 30px;
+    a{
+      color:black;
+      font-family: T-WenYue-XinQingNianTi-NC-W8;
+    }
+  }
+}
+
+.header-image{
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.3);
+  position: absolute;
+  border: 5px solid white;
+  left:10%;
+  top:13%;
+  height:200px;
+  width:200px;
+  z-index: 2;
+  background-image:url("https://gss3.bdstatic.com/84oSdTum2Q5BphGlnYG/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=fccb5254bfb970aebd9f6989f61449da&wh_rate=null&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F8b82b9014a90f6038377a6fb3f12b31bb151ed43.jpg");
+  background-repeat: round;
+  border-radius: 30px;
+}
+
+.cover-image{
+  height:200px;
+  width: 100%;
+  background-color: crimson;
+  padding: 0px;
+  margin: 0px;
+  .tieba-title{
+    font-family: T-WenYue-XinQingNianTi;
+    margin-left: 22%;
+    padding-top: 120px;
+    h1{
+      font-family: T-WenYue-XinQingNianTi-NC-W8;
+      font-weight: 200;
+    }
+  }
+}
