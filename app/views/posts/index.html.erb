@@ -1,29 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+<div class="row">
+  <div class="content-container columns small-11">
+    <table>
+      <thead>
+        <tr>
+          <th class="text-center" id="title-table">最新发表</th>
+          <th class="text-center" id="reply-table">最新跟帖</th>
+          <th class="text-center" id="trend-table">跟帖/点赞</th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+        <tr>
+          <td>
+            <div class="post-index">
+              <h5><%= post.title %></h5>
+              <%= post.content.first(1400) %>...
+            </div>
+          </td>
+          <td>
+            <div class="reply-index">
+              <%= post.title %>
+            </div>
+          </td>
+          <td>
+            <div class="trend-index">
+            </div>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.content %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <br>
 
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+    <%= link_to 'New Post', new_post_path %>
+  </div>
+  <div class="columns small-1 right" data-sticky-container>
+      <div class="sticky" data-sticky data-top-anchor="header:bottom">
+        <%= link_to new_post_path, :action => 'go' do %>
+        <div class="control" style="width:70px;height:70px;background-color:blue;color:white;font-size:30px;padding:25px 20px;">
+          新
+        </div>
+        <% end %>
+      </div>
+  </div>
+</div>
