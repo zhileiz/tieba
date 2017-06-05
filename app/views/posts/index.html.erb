@@ -17,7 +17,7 @@
           <td>
             <div class="post-index">
               <h5><%= post.title %></h5>
-              <%= post.content.first(1400) %>...
+              <%= post.content.first(140) %>...
             </div>
           </td>
           <td>
@@ -36,15 +36,19 @@
 
     <br>
 
-    <%= link_to 'New Post', new_post_path %>
   </div>
   <div class="columns small-1 right" data-sticky-container>
       <div class="sticky" data-sticky data-top-anchor="header:bottom">
-        <%= link_to new_post_path, :action => 'go' do %>
-        <div class="control" style="width:70px;height:70px;background-color:blue;color:white;font-size:30px;padding:25px 20px;">
-          新
-        </div>
-        <% end %>
+        <a data-open="exampleModal1">
+          <div class="control" style="width:70px;height:70px;background-color:blue;color:white;font-size:30px;padding:25px 20px;">
+              新
+          </div>
+        </a>
       </div>
   </div>
+
+  <div class="reveal" id="exampleModal1" data-reveal>
+  <%= render 'form', post: @post %>
+  </div>
+
 </div>
