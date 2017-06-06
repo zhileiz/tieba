@@ -17,8 +17,10 @@
         <tr>
           <td>
             <div class="post-index">
+              <%= link_to post do%>
               <h5><%= post.title %></h5>
-              <%= post.content.first(140) %>...
+              <% end %>
+              <%= strip_tags(post.content.first(140).html_safe) %>...
             </div>
           </td>
           <td>

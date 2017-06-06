@@ -13,7 +13,7 @@
         </div>
         <div class="message">
           <span><%= @post.user.username %></span>
-          <p><%= @post.content %></p>
+          <p><%= @post.content.html_safe %></p>
         </div>
       </div>
       <% @post.replies.each do |reply| %>
@@ -25,7 +25,7 @@
           </div>
           <div class="message">
             <span><%=reply.user.username%></span>
-            <p><%= reply.content %></p>
+            <p><%= raw(reply.content) %></p>
           </div>
         </div>
         <% else %>
