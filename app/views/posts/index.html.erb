@@ -38,6 +38,7 @@
     <br>
 
   </div>
+  <% if (user_signed_in?) %>
   <div class="columns small-1 right" data-sticky-container>
       <div class="sticky" data-sticky data-top-anchor="header:bottom">
         <a data-open="exampleModal1">
@@ -47,9 +48,11 @@
         </a>
       </div>
   </div>
-
+  <% end %>
+  <% if (user_signed_in?) %>
   <div class="reveal" id="exampleModal1" data-reveal>
   <%= render 'form', post: @post %>
   </div>
+  <% end %>
 
 </div>
