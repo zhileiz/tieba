@@ -2,6 +2,16 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :用户名 %>
+    <%= f.text_field :username, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :验证名 %>
+    <%= f.text_field :validname, autofocus: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :邮箱 %>
     <%= f.email_field :email, autofocus: true %>
   </div>
@@ -13,6 +23,11 @@
   <div class="field">
     <%= f.label :新密码（至少6位，不想改就不要动） %>
     <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :头像 %><br />
+    <%= f.file_field :avatar %>
   </div>
 
   <div class="field">
