@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :posts
+  resources :posts do
+    resources :replies
+  end
   root "posts#index"
   get "/about" => "pages#about"
   get "/toupiao" => "pages#toupiao"

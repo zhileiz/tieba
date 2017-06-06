@@ -1,14 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+<div class="row">
+  <div class="columns large-12">
+    <div class="post-title">
+      <%=@post.user.username%> : <%= @post.title %>
+    </div>
+    <div class="chat-box">
+      <div class="message-box left-img">
+        <div class="picture">
+          <img src="https://dribbble.s3.amazonaws.com/users/2493/avatars/original/joey_head_new.png?1346157876" title="user name" />
+          <span class="time">10 mins</span>
+        </div>
+        <div class="message">
+          <span><%= @post.user.username %></span>
+          <p><%= @post.content %></p>
+        </div>
+      </div>
+      <% @post.replies.each do |reply| %>
+        <% if reply.user == @post.user %>
+        <div class="message-box left-img">
+          <div class="picture">
+            <img src="https://dribbble.s3.amazonaws.com/users/212696/avatars/small/monogram_pixel_perfect.png?1359994784" title="user name" />
+            <span class="time">2 mins</span>
+          </div>
+          <div class="message">
+            <span><%=reply.user.username%></span>
+            <p><%= reply.content %></p>
+          </div>
+        </div>
+        <% else %>
+        <div class="message-box right-img">
+          <div class="picture">
+            <img src="https://dribbble.s3.amazonaws.com/users/212696/avatars/small/monogram_pixel_perfect.png?1359994784" title="user name" />
+            <span class="time">2 mins</span>
+          </div>
+          <div class="message">
+            <span><%=reply.user.username%></span>
+            <p><%= reply.content %></p>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= render 'replies/form' %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
