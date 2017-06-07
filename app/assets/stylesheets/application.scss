@@ -179,11 +179,11 @@ body{
 }
 
 #title-table{
-  width: 50%;
+  width: 60%;
   font-size: 16px;
 }
 #reply-table{
-  width: 30%;
+  width: 20%;
   font-size: 16px;
 }
 #trend-table{
@@ -192,6 +192,9 @@ body{
 
 .post-index{
   padding: 20px 40px;
+  a:hover{
+    color:crimson;
+  }
 }
 .reply-index{
   padding: 30px 40px;
@@ -315,4 +318,22 @@ body{
   font-size: 25px;
   color: white;
   font-family: T-WenYue-XinQingNianTi-NC-W8;
+}
+
+.post-index-title{
+  padding-left: 80px;
+  p{
+    margin:0px;
+    margin-top:-5px;
+  }
+}
+
+.post-avatar{
+  img{
+    border-radius: 50%;
+    height:60px;
+    width:60px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.3);
+  }
+  float: left;
 }

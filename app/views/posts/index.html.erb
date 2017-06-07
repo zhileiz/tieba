@@ -18,14 +18,26 @@
           <td>
             <div class="post-index">
               <%= link_to post do%>
-              <h5><%= post.title %></h5>
+              <div class="post-avatar">
+                <%= image_tag post.user.avatar.url(:thumb) %>
+              </div>
+              <div class="post-index-title">
+                <h5><%= truncate(strip_tags(post.title), length:20)  %></h5>
+                <p>楼主: <%= post.user.username %>  时间：<%= post.created_at.to_s.first(19) %></p>
+              </div>
+              <div style="clear:both;"></div>
               <% end %>
-              <%= strip_tags(post.content.first(140).html_safe) %>...
+              <%= truncate(strip_tags(post.content.html_safe), length:120) %>
             </div>
           </td>
           <td>
             <div class="reply-index">
-              <%= post.title %>
+              <% replies = post.replies %>
+              <% if replies.empty? %>
+              <%= post.user.username %>
+              <% else %>
+              <%= replies.last.user.username %>
+              <% end %>
             </div>
           </td>
           <td>
