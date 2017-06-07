@@ -23,6 +23,7 @@ gem 'devise'
 gem 'paperclip', "~> 5.0.0"
 gem 'tinymce-rails'
 gem 'font-awesome-rails'
+gem 'pry', '~> 0.10.3'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

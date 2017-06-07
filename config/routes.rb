@@ -9,5 +9,8 @@ Rails.application.routes.draw do
   get "/xiangce" => "pages#xiangce"
   get 'users/:id' => 'users#show', :as => 'usershow'
   get 'users' => 'users#index', :as => 'userindex'
+  get '/by-post' => 'posts#indexbypost', :as => 'indexbypost'
+  get '/by-reply' => 'posts#indexbyreply', :as => 'indexbyreply'
+  get '/by-trend' => 'posts#indexbypop', :as => 'indexbypop'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

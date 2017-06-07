@@ -4,7 +4,34 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.includes(:replies).order("replies.created_at desc")
+    if user_signed_in?
+      @post = current_user.posts.build
+    end
+  end
+
+  def indexbypost
+    @posts = Post.all.order("created_at desc")
+    if user_signed_in?
+      @post = current_user.posts.build
+    end
+  end
+
+  def indexbyreply
+    @posts = Post.includes(:replies).order("replies.created_at desc")
+    if user_signed_in?
+      @post = current_user.posts.build
+    end
+  end
+
+  def indexbypop
+    posts = Post.includes(:replies).order("replies.created_at desc")
+    @posts = Post.joins(:replies).group("posts.id").order("count(replies.id) desc").to_a
+    posts.each do |post|
+      if post.replies.count == 0
+        @posts.push(post)
+      end
+    end
     if user_signed_in?
       @post = current_user.posts.build
     end
