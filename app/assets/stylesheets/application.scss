@@ -15,6 +15,7 @@
  *= require foundation_and_overrides
 
  */
+ @import "font-awesome";
  @charset "utf-8";
  @font-face {
 	font-family: 'localsans-win-light';
@@ -179,7 +180,7 @@ body{
 }
 
 #title-table{
-  width: 60%;
+  width: 65%;
   font-size: 16px;
 }
 #reply-table{
@@ -191,13 +192,17 @@ body{
 }
 
 .post-index{
-  padding: 20px 40px;
+  padding: 8px 30px;
   a:hover{
     color:crimson;
   }
 }
 .reply-index{
-  padding: 30px 40px;
+  padding: 20px 20px;
+}
+.trend-index{
+  text-align: center;
+  font-size: 20px;
 }
 
 .registration-submit{
@@ -321,19 +326,54 @@ body{
 }
 
 .post-index-title{
-  padding-left: 80px;
+  padding-left: 72px;
+  margin-top:2px;
   p{
     margin:0px;
-    margin-top:-5px;
   }
+}
+
+.post-index-content{
+  margin-top: 10px;
 }
 
 .post-avatar{
   img{
     border-radius: 50%;
-    height:60px;
-    width:60px;
+    height:55px;
+    width:55px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.3);
   }
   float: left;
+}
+
+.reply-avatar{
+  img{
+    border-radius: 50%;
+    height:40px;
+    width:40px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.3);
+  }
+  float: left;
+  margin-top:6px;
+}
+
+.reply-latest{
+  padding-left: 55px;
+  p{
+    margin:0px;
+  }
+}
+.reveal{
+  width:80%;
+  height:70%;
+  padding: 45px;
+  border-radius: 20px;
+  border:none;
+}
+.reveal-title{
+  font-family: T-WenYue-XinQingNianTi-NC-W8;
+  font-size: 45px;
+  text-align: center;
+  padding:30px;
 }

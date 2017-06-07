@@ -6,15 +6,20 @@
     <table>
       <thead>
         <tr>
+          <th class="text-center" id="trend-table">跟帖/点赞</th>
           <th class="text-center" id="title-table">最新发表</th>
           <th class="text-center" id="reply-table">最新跟帖</th>
-          <th class="text-center" id="trend-table">跟帖/点赞</th>
         </tr>
       </thead>
 
       <tbody>
         <% @posts.each do |post| %>
         <tr>
+          <td>
+            <div class="trend-index">
+                <%=fa_icon "commenting-o", text:("  " + (post.replies.size+1).to_s) %>
+            </div>
+          </td>
           <td>
             <div class="post-index">
               <%= link_to post do%>
@@ -23,25 +28,44 @@
               </div>
               <div class="post-index-title">
                 <h5><%= truncate(strip_tags(post.title), length:20)  %></h5>
-                <p>楼主: <%= post.user.username %>  时间：<%= post.created_at.to_s.first(19) %></p>
+                <p>楼主: <%= post.user.username %>  &nbsp 时间: <%= post.created_at.to_s.first(19) %></p>
               </div>
               <div style="clear:both;"></div>
               <% end %>
-              <%= truncate(strip_tags(post.content.html_safe), length:120) %>
+              <div class="post-index-content">
+                <%= truncate(strip_tags(post.content.html_safe), length:140) %>
+              </div>
             </div>
           </td>
           <td>
             <div class="reply-index">
               <% replies = post.replies %>
               <% if replies.empty? %>
-              <%= post.user.username %>
+              <div class="reply-avatar">
+                <%= image_tag post.user.avatar.url(:thumb) %>
+              </div>
+              <div class="reply-latest" style="max-width:100%;">
+                <p>
+                  <strong><%= post.user.username %></strong>
+                </p>
+                <p>
+                  <%= post.updated_at.to_s.first(19) %>
+                </p>
+              </div>
               <% else %>
-              <%= replies.last.user.username %>
+              <div class="reply-avatar">
+                <%= image_tag replies.last.user.avatar.url(:thumb) %>
+              </div>
+              <div class="reply-latest" style="max-width:100%;">
+                <p>
+                  <strong><%= replies.last.user.username %></strong>
+                </p>
+                <p>
+                  <%= replies.last.created_at.to_s.first(19) %>
+                </p>
+              </div>
+              <div style="clear:both;"></div>
               <% end %>
-            </div>
-          </td>
-          <td>
-            <div class="trend-index">
             </div>
           </td>
         </tr>
@@ -65,7 +89,10 @@
   <% end %>
   <% if (user_signed_in?) %>
   <div class="reveal" id="exampleModal1" data-reveal>
-  <%= render 'form', post: @post %>
+    <div class="reveal-title">搞个大新闻？</div>
+    <div class="reveal-form">
+      <%= render 'form', post: @post %>
+    </div>
   </div>
   <% end %>
 

@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %>
+    <%= f.label :标题 %>
     <%= f.text_field :title %>
   </div>
 
   <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content, :class => "tinymce", :rows => 20, :cols => 120 %>
+    <%= f.label :内容 %>
+    <%= f.text_area :content, :class => "tinymce", :rows => 30, :cols => 120 %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions registration-submit text-center">
+    <%= f.submit "发"%>
   </div>
 <% end %>
