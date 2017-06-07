@@ -1,11 +1,10 @@
 <%= form_for([@post, @post.replies.build]) do |f| %>
 
   <div class="field">
-    <%= f.label :content %>
     <%= f.text_area :content, :class => "tinymce", :rows => 20, :cols => 120 %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions registration-submit text-center">
+    <%= f.submit "回"%>
   </div>
 <% end %>

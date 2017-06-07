@@ -97,6 +97,10 @@
 	src: local('â˜º'), font-url('/assets/Title-TpldYiFengScripture.otf') format('opentype');
 }
 @font-face {
+	font-family: FZZZHUNHJW;
+	src: local('â˜º'), font-url('/assets/FZZZHUNHJW.TTF') format('truetype');
+}
+@font-face {
 	font-family: T-TpldLehBienLehsho;
 	src: local('â˜º'), font-url('/assets/Title-TpldLehBienLehsho.otf') format('opentype');
 }
@@ -221,6 +225,23 @@ body{
     height:65px;
     width:65px;
   }
+  .new-button{
+    height:60px;
+    text-align: center;
+    width:60px;
+    border-radius: 50%;
+    padding-top: 20px;
+    font-size: 30px;
+    font-family: T-WenYue-XinQingNianTi-NC-W8;
+    border: none;
+    color: white;
+    background-color: crimson;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.3);
+  }
+  .new-button:hover{
+    height:65px;
+    width:65px;
+  }
 }
 
 .chat-box{
@@ -234,14 +255,14 @@ body{
 }
 .message-box .picture{
   float:left;
-  width:50px;
+  width:70px;
   display:block;
   padding-right:10px;
 }
 .picture img{
-  width:43px;
-  height:48px;
-  border-radius:5px;
+  width:55px;
+  height:55px;
+  border-radius:50%;
 }
 .picture span{
   font-weight:bold;
@@ -255,10 +276,15 @@ body{
   background:#fff;
   display:inline-block;
   padding:13px;
-  width:90%;
   border-radius:2px;
   box-shadow: 0 1px 1px rgba(0,0,0,.04);
   position:relative;
+  min-height: 40px;
+  max-width: 90%;
+  min-width: 45%;
+  p{
+    margin:0;
+  }
 }
 .message:before{
   content:"";
@@ -311,8 +337,10 @@ body{
   border-radius:2px;
   float:right;
 }
-.message{
-  min-height: 30px;
+.right-img{
+  .message{
+    float:right;
+  }
 }
 
 .post-title{
@@ -326,15 +354,21 @@ body{
 }
 
 .post-index-title{
+  font-family: FZZZHUNHJW;
   padding-left: 72px;
   margin-top:2px;
+  h5{
+      font-family: FZZZHUNHJW;
+  }
   p{
+    font-family: FZZZHUNHJW;
     margin:0px;
   }
 }
 
 .post-index-content{
   margin-top: 10px;
+  font-family: FZZZHUNHJW;
 }
 
 .post-avatar{

@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-  <div class="columns large-12">
+  <div class="columns small-11">
     <div class="post-title">
       <%=@post.user.username%> : <%= @post.title %>
     </div>
     <div class="chat-box">
       <div class="message-box left-img">
         <div class="picture">
-          <img src="https://dribbble.s3.amazonaws.com/users/2493/avatars/original/joey_head_new.png?1346157876" title="user name" />
+          <%= image_tag @post.user.avatar.url(:thumb) %>
           <span class="time">10 mins</span>
         </div>
         <div class="message">
@@ -20,7 +20,7 @@
         <% if reply.user == @post.user %>
         <div class="message-box left-img">
           <div class="picture">
-            <img src="https://dribbble.s3.amazonaws.com/users/212696/avatars/small/monogram_pixel_perfect.png?1359994784" title="user name" />
+            <%= image_tag reply.user.avatar.url(:thumb) %>
             <span class="time">2 mins</span>
           </div>
           <div class="message">
@@ -31,20 +31,36 @@
         <% else %>
         <div class="message-box right-img">
           <div class="picture">
-            <img src="https://dribbble.s3.amazonaws.com/users/212696/avatars/small/monogram_pixel_perfect.png?1359994784" title="user name" />
+            <%= image_tag reply.user.avatar.url(:thumb) %>
             <span class="time">2 mins</span>
           </div>
           <div class="message">
             <span><%=reply.user.username%></span>
-            <p><%= reply.content %></p>
+            <p><%= reply.content.html_safe %></p>
           </div>
+          <div style="clear:both;"></div>
         </div>
         <% end %>
       <% end %>
     </div>
   </div>
+  <% if (user_signed_in?) %>
+  <div class="columns small-1 right" data-sticky-container>
+      <div class="sticky" data-sticky data-top-anchor="header:bottom">
+        <a data-open="exampleModal1">
+          <div class="control registration-submit">
+              <div class="new-button">回</div>
+          </div>
+        </a>
+      </div>
+  </div>
+  <% end %>
+  <% if (user_signed_in?) %>
+  <div class="reveal" id="exampleModal1" data-reveal>
+    <div class="reveal-title">来批判一番</div>
+    <div class="reveal-form">
+      <%= render 'replies/form' %>
+    </div>
+  </div>
+  <% end %>
 </div>
-<%= render 'replies/form' %>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
