@@ -69,9 +69,25 @@ class PostsController < ApplicationController
     redirect_to :back
   end
 
+  def makesticky
+    @post = Post.find(params[:id])
+    unless @post.sticky
+      @post.update(sticky:true)
+    end
+    redirect_to :back
+  end
+
   # GET /posts/1
   # GET /posts/1.json
   def show
+  end
+
+  def jingping
+    @posts = Post.all.order("created_at desc").to_a.keep_if{|i| i.jing == true}
+    @posts = Kaminari.paginate_array(@posts).page(params[:page])
+    if user_signed_in?
+      @post = current_user.posts.build
+    end
   end
 
   # GET /posts/new

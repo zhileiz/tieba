@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     member do
       put "like", to: "posts#upvote"
       put "jing", to: "posts#makejing"
+      put "stick", to: "posts#makesticky"
     end
   end
   root "posts#index"
@@ -16,5 +17,6 @@ Rails.application.routes.draw do
   get '/by-post' => 'posts#indexbypost', :as => 'indexbypost'
   get '/by-reply' => 'posts#indexbyreply', :as => 'indexbyreply'
   get '/by-trend' => 'posts#indexbypop', :as => 'indexbypop'
+  get '/top' => 'posts#jingping', :as => 'jingping'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,4 +1,4 @@
-<% provide(:page_title, "铁吧") %>
+<% provide(:page_title, "年级顶尖") %>
 
 <div class="row">
   <div class="content-container columns small-11">
@@ -46,17 +46,10 @@
                     <%= truncate(strip_tags(post.title), length:20)  %>
                     <% if post.jing == true %>
                       <div class="jing-tag"> 精 </div>
-                    <% elsif post.sticky == true %>
-                      <div class="jing-tag">
-                        顶
-                      </div>
                     <% else %>
                       <% if current_user.admin == true %>
                       <div class="set-jing-btn">
                         <%= link_to jing_post_path(post), method: :put do %>
-                          <%=fa_icon "heart"%>
-                        <% end %>
-                        <%= link_to stick_post_path(post), method: :put do %>
                           <%=fa_icon "toggle-up"%>
                         <% end %>
                       </div>
