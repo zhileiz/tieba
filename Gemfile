@@ -24,6 +24,8 @@ gem 'paperclip', "~> 5.0.0"
 gem 'tinymce-rails'
 gem 'font-awesome-rails'
 gem 'pry', '~> 0.10.3'
+gem 'kaminari', '~> 1.0.1'
+gem 'acts_as_votable', '~> 0.10.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

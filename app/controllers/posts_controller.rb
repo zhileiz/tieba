@@ -4,21 +4,38 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.includes(:replies).order("replies.created_at desc")
+    posts = Post.all.order("created_at desc").to_a.keep_if{|b| b.replies.count == 0}
+    temp = Post.includes(:replies).order("replies.created_at desc").to_a.reject{|a| a.replies.count == 0}
+    @posts = []
+    left = 0
+    right = 0
+    while !posts.empty? && !temp.empty?
+      if (posts[left].created_at > temp[right].replies.first.created_at)
+        @posts.push(posts.delete_at(left))
+      else
+        @posts.push(temp.delete_at(right))
+      end
+    end
+    if posts.empty?
+      @posts.concat(temp)
+    else
+      @posts.concat(posts)
+    end
+    @posts = Kaminari.paginate_array(@posts).page(params[:page])
     if user_signed_in?
       @post = current_user.posts.build
     end
   end
 
   def indexbypost
-    @posts = Post.all.order("created_at desc")
+    @posts = Post.all.order("created_at desc").page(params[:page])
     if user_signed_in?
       @post = current_user.posts.build
     end
   end
 
   def indexbyreply
-    @posts = Post.includes(:replies).order("replies.created_at desc")
+    @posts = Post.includes(:replies).order("replies.created_at desc").page(params[:page])
     if user_signed_in?
       @post = current_user.posts.build
     end
@@ -32,9 +49,24 @@ class PostsController < ApplicationController
         @posts.push(post)
       end
     end
+    @posts = Kaminari.paginate_array(@posts).page(params[:page])
     if user_signed_in?
       @post = current_user.posts.build
     end
+  end
+
+  def upvote
+    @post = Post.find(params[:id])
+    @post.upvote_by current_user
+    redirect_to :back
+  end
+
+  def makejing
+    @post = Post.find(params[:id])
+    unless @post.jing
+      @post.update(jing:true)
+    end
+    redirect_to :back
   end
 
   # GET /posts/1

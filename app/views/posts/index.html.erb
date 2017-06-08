@@ -28,20 +28,39 @@
         <tr>
           <td>
             <div class="trend-index">
-                <%=fa_icon "commenting-o", text:("  " + (post.replies.size+1).to_s) %>
+                <strong><%=fa_icon "commenting-o", text:("  " + (post.replies.size+1).to_s) %></strong><br/>
+                <br />
+                <%= link_to like_post_path(post), method: :put do %>
+                  <%=fa_icon "thumbs-up", text:("  " + (post.get_upvotes.size).to_s) %>
+                <% end %>
             </div>
           </td>
           <td>
             <div class="post-index">
               <%= link_to post do%>
-              <div class="post-avatar">
-                <%= image_tag post.user.avatar.url(:thumb) %>
-              </div>
-              <div class="post-index-title">
-                <h5><%= truncate(strip_tags(post.title), length:20)  %></h5>
-                <p>楼主: <%= post.user.username %>  &nbsp 时间: <%= post.created_at.to_s.first(19) %></p>
-              </div>
-              <div style="clear:both;"></div>
+                <div class="post-avatar">
+                  <%= image_tag post.user.avatar.url(:thumb) %>
+                </div>
+                <div class="post-index-title">
+                  <h5>
+                    <%= truncate(strip_tags(post.title), length:20)  %>
+                    <% if post.jing == true %>
+                      <div class="jing-tag"> 精 </div>
+                    <% else %>
+                      <div class="set-jing-btn">
+                        <%= link_to jing_post_path(post), method: :put do %>
+                          <%=fa_icon "toggle-up"%>
+                        <% end %>
+                      </div>
+                      <% end %>
+                </h5>
+                  <p class="special-link">
+                    <%= link_to post do %>
+                    楼主: <%= post.user.username %>  &nbsp 时间: <%= post.created_at.to_s.first(19) %>
+                    <% end %>
+                  </p>
+                </div>
+                <div style="clear:both;"></div>
               <% end %>
               <div class="post-index-content">
                 <%= truncate(strip_tags(post.content.html_safe), length:140) %>
@@ -83,7 +102,9 @@
         <% end %>
       </tbody>
     </table>
-
+    <div class="pagination text-center">
+      <%= paginate @posts %>
+    </div>
   </div>
   <% if (user_signed_in?) %>
   <div class="columns small-1 right" data-sticky-container>
