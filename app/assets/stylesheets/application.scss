@@ -119,8 +119,9 @@ body{
 }
 
 .top-bar{
-  background-image:url("header.jpg");
-  background-position:20px -70px;
+  // background-image:url("header.jpg");
+  // background-position:20px -70px;
+  background-image:linear-gradient(#1ad6fd,#1d62f0);
   z-index: 1;
   padding-bottom: 20px;
   ul{
@@ -128,7 +129,6 @@ body{
   }
 }
 .menu{
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.3);
   padding-left: 21%;
   li{
     font-size: 30px;
@@ -137,14 +137,13 @@ body{
       font-family: T-WenYue-XinQingNianTi-NC-W8;
       color: #e0dfdc;
       letter-spacing: .1em;
-      text-shadow: 0 2px 0 #2c2c2c, 0 2px 0 #282828, 0 1px 0 #262626, 0 1px 0 #242421, 0 4px 0 #222, 0 1px 0 #202020, 0 1px 0 #1e1e1e, 0 1px 0 #1c1c1c, 0 4px 0 #1a1a1a, 0 5px 0 #181818, 0 6px 0 #161616, 0 7px 0 #141414, 0 8px 0 #121212, 0 10px 10px rgba(0, 0, 0, 0.9)
     }
     a:hover{
       color:white;
       background: none;
     }
     .highlighted{
-      color:crimson;
+      color:#FF2D55
     }
     .highlighted:hover{
       color:crimson;
@@ -174,25 +173,24 @@ body{
   .tieba-title{
     font-family: T-WenYue-XinQingNianTi;
     margin-left: 22%;
-    padding-top: 70px;
+    padding-top: 80px;
     h1{
       font-family: T-WenYue-XinQingNianTi-NC-W8;
       font-size: 65px;
       color:white;
       font-weight: 200;
       color: #e0dfdc;
-  letter-spacing: .1em;
-  text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c, 0 3px 0 #2a2a2a, 0 4px 0 #282828, 0 5px 0 #262626, 0 6px 0 #242424, 0 7px 0 #222, 0 8px 0 #202020, 0 9px 0 #1e1e1e, 0 10px 0 #1c1c1c, 0 11px 0 #1a1a1a, 0 12px 0 #181818, 0 13px 0 #161616, 0 14px 0 #141414, 0 15px 0 #121212, 0 22px 30px rgba(0, 0, 0, 0.9);
-    }
-  }
+      text-shadow: 5px 5px 0px rgba(0,0,0,0.2);
+  letter-spacing: .1em;  }
+}
 }
 
 .content-container{
   min-height: 100%;
-  margin-top: -35px;
+  margin-top: -2px;
   z-index: -1;
   tr:nth-child(even){
-    background-color: rgba(4, 148, 255, 0.21);
+    background-color: #D1EEFC;
   }
   thead{
     background-color: rgba(4, 148, 255, 0.21);
@@ -360,7 +358,7 @@ body{
 }
 
 .post-title{
-  background-color: crimson;
+  background-color: #1CA5F8;
   min-height: 30px;
   text-align: center;
   padding: 10px;
@@ -426,4 +424,12 @@ body{
   font-size: 45px;
   text-align: center;
   padding:30px;
+}
+.page-footer{
+  width: 100%;
+  height:100px;
+  background-image:linear-gradient(#1ad6fd,#1BAFF9);
+}
+table{
+  margin-bottom: 0px;
 }
