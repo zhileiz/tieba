@@ -4,8 +4,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    posts = Post.all.order("created_at desc").to_a.keep_if{|b| b.replies.count == 0}
-    temp = Post.includes(:replies).order("replies.created_at desc").to_a.reject{|a| a.replies.count == 0}
+    ding = Post.all.order("created_at desc").to_a.keep_if{|b| b.sticky == true}
+    posts = Post.all.order("created_at desc").to_a.keep_if{|b| b.replies.count == 0 && b.sticky == false}
+    temp = Post.includes(:replies).order("replies.created_at desc").to_a.reject{|a| a.replies.count == 0 || a. sticky == true}
     @posts = []
     left = 0
     right = 0
@@ -17,9 +18,9 @@ class PostsController < ApplicationController
       end
     end
     if posts.empty?
-      @posts.concat(temp)
+      @posts = ding.concat(@posts.concat(temp))
     else
-      @posts.concat(posts)
+      @posts = ding.concat(@posts.concat(temp))
     end
     @posts = Kaminari.paginate_array(@posts).page(params[:page])
     if user_signed_in?
@@ -28,27 +29,35 @@ class PostsController < ApplicationController
   end
 
   def indexbypost
-    @posts = Post.all.order("created_at desc").page(params[:page])
+    ding = Post.all.order("created_at desc").to_a.keep_if{|b| b.sticky == true}
+    @posts = Post.all.order("created_at desc").to_a.keep_if{|b| b.sticky == false}
+    @posts = ding.concat(@posts)
+    @posts = Kaminari.paginate_array(@posts).page(params[:page])
     if user_signed_in?
       @post = current_user.posts.build
     end
   end
 
   def indexbyreply
-    @posts = Post.includes(:replies).order("replies.created_at desc").page(params[:page])
+    ding = Post.all.order("created_at desc").to_a.keep_if{|b| b.sticky == true}
+    @posts = Post.includes(:replies).order("replies.created_at desc").to_a.reject{|a| a. sticky == true}
+    @posts = ding.concat(@posts)
+    @posts = Kaminari.paginate_array(@posts).page(params[:page])
     if user_signed_in?
       @post = current_user.posts.build
     end
   end
 
   def indexbypop
-    posts = Post.includes(:replies).order("replies.created_at desc")
-    @posts = Post.joins(:replies).group("posts.id").order("count(replies.id) desc").to_a
+    ding = Post.all.order("created_at desc").to_a.keep_if{|b| b.sticky == true}
+    posts = Post.includes(:replies).order("replies.created_at desc").to_a.reject{|a| a. sticky == true}
+    @posts = Post.joins(:replies).group("posts.id").order("count(replies.id) desc").to_a.reject{|a| a. sticky == true}
     posts.each do |post|
       if post.replies.count == 0
         @posts.push(post)
       end
     end
+    @posts = ding.concat(@posts)
     @posts = Kaminari.paginate_array(@posts).page(params[:page])
     if user_signed_in?
       @post = current_user.posts.build

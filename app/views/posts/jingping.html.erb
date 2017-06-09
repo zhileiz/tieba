@@ -45,7 +45,7 @@
                   <h5>
                     <%= truncate(strip_tags(post.title), length:20)  %>
                     <% if post.jing == true %>
-                      <div class="jing-tag"> 精 </div>
+                      <div class="jing-tag" style="float:right;"> 精 </div>
                     <% else %>
                       <% if current_user.admin == true %>
                       <div class="set-jing-btn">

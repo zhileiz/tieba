@@ -44,15 +44,22 @@
                 <div class="post-index-title">
                   <h5>
                     <%= truncate(strip_tags(post.title), length:20)  %>
-                    <% if post.jing == true %>
-                      <div class="jing-tag"> 精 </div>
-                    <% else %>
-                      <div class="set-jing-btn">
-                        <%= link_to jing_post_path(post), method: :put do %>
-                          <%=fa_icon "toggle-up"%>
-                        <% end %>
-                      </div>
+                    <div class="property-bar">
+                      <% if post.jing == true %>
+                        <span class="jing-tag"> 精 </span>
+                      <% else %>
+                          <%= link_to jing_post_path(post), method: :put do %>
+                            <%=fa_icon "heart"%>
+                          <% end %>
                       <% end %>
+                      <% if post.sticky == true %>
+                        <span class="ding-tag"> 顶 </span>
+                      <% else %>
+                        <%= link_to stick_post_path(post), method: :put do %>
+                        <%=fa_icon "toggle-up"%>
+                        <% end %>
+                      <% end %>
+                    </div>
                 </h5>
                   <p class="special-link">
                     <%= link_to post do %>

@@ -44,24 +44,30 @@
                 <div class="post-index-title">
                   <h5>
                     <%= truncate(strip_tags(post.title), length:20)  %>
-                    <% if post.jing == true %>
-                      <div class="jing-tag"> 精 </div>
-                    <% elsif post.sticky == true %>
-                      <div class="jing-tag">
-                        顶
-                      </div>
-                    <% else %>
-                      <% if current_user.admin == true %>
-                      <div class="set-jing-btn">
-                        <%= link_to jing_post_path(post), method: :put do %>
-                          <%=fa_icon "heart"%>
-                        <% end %>
-                        <%= link_to stick_post_path(post), method: :put do %>
+                    <div class="property-bar">
+                      <% if post.jing == true %>
+                        <span class="jing-tag"> 精 </span>
+                      <% else %>
+                          <% if user_signed_in? %>
+                            <% if current_user.admin == true %>
+                              <%= link_to jing_post_path(post), method: :put do %>
+                                <%=fa_icon "heart"%>
+                              <% end %>
+                            <% end %>
+                          <% end %>
+                      <% end %>
+                      <% if post.sticky == true %>
+                        <span class="ding-tag"> 顶 </span>
+                      <% else %>
+                        <% if user_signed_in? %>
+                          <% if current_user.admin == true %>
+                          <%= link_to stick_post_path(post), method: :put do %>
                           <%=fa_icon "toggle-up"%>
+                          <% end %>
+                          <% end %>
                         <% end %>
-                      </div>
                       <% end %>
-                      <% end %>
+                    </div>
                 </h5>
                   <p class="special-link">
                     <%= link_to post do %>

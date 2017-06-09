@@ -12,7 +12,7 @@
     <%if user_signed_in?%>
     <li><%= link_to "相册", xiangce_path %></li>
     <li><%= link_to "投票", toupiao_path %></li>
-    <li><a href="#">成员</a></li>
+    <li><%= link_to "成员", userindex_path %></li>
     <% end %>
     <li><%= link_to "关于", about_path %></li>
     <% if user_signed_in?%>
