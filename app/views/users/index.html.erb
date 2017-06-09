@@ -1,6 +1,9 @@
+<% provide(:page_title, "妖怪") %>
+<% provide(:users_active, "highlighted") %>
+
 <div class = "row">
-  <div class = "columns large-10">
-    <h2>Admins</h2>
+  <div class = "columns large-10"style="padding-bottom:10px;">
+    <h2 class="member-index-title">静如处子</h2>
   </div>
 </div>
 <div class = "row small-up-2 medium-up-3 large-up-4 user-roll">
@@ -19,8 +22,8 @@
 
 
 <div class = "row">
-  <div class = "columns large-10">
-    <h2>Users</h2>
+  <div class = "columns large-10" style="padding-bottom:10px;padding-top:15px;">
+    <h2 class="member-index-title">动如脱兔</h2>
   </div>
 </div>
 <div class = "row small-up-2 medium-up-3 large-up-5 user-roll">
@@ -31,6 +34,9 @@
     </div>
     <div class = "user-name">
       <%= user.username %>
+      <% if current_user.admin == true %>
+      <span style="font-size:10px;"><%= user.validname %></span>
+      <% end %>
     </div>
   </div>
   <% end %>

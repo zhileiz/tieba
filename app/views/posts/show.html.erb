@@ -1,3 +1,10 @@
+<% provide(:page_title, "铁吧") %>
+<% if @post.jing == true %>
+<% provide(:jing_active, "highlighted") %>
+<% else %>
+<% provide(:posts_active, "highlighted") %>
+<% end %>
+
 <div class="row">
   <div class="columns small-11">
     <div class="post-title">
