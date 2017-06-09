@@ -503,3 +503,21 @@ table{
     font-family: FZZZHUNHJW;
   }
 }
+
+.user-roll{
+  img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  .user-avatar{
+    float: left;
+  }
+  .user-name{
+    float: left;
+    font-size: 20px;
+    font-family: FZZZHUNHJW;
+    padding: 10px;
+    padding-top: 20px;
+  }
+}
