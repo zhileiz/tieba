@@ -18,9 +18,11 @@
 ## 2. 项目安装方法（仅开发人员）
 ### 安装 Ruby 和 Rails 框架
 * Windows 安装方法：
+
 一般不推荐使用Windows进行Rails开发（或任何开发at all...）但是也并非不可以。
 Windows的安装规则较为复杂，请按照[此推荐教程](https://medium.com/ruby-on-rails-web-application-development/how-to-install-rubyonrails-on-windows-7-8-10-complete-tutorial-2017-fc95720ee059)或[此教程](https://gorails.com/setup/windows/10)进行Windows上的安装。
 另外也可以安装Linux虚拟机或Linux双系统，有[此教程](http://www.seas.upenn.edu/~cis196/VM/#windows)。
+
 * MacOS 安装方法：安装homebrew，terminal输入
 ```
 >> brew install ruby
