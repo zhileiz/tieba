@@ -16,7 +16,12 @@
 ## 2. 安装方法
 ### 安装 Ruby 和 Rails 框架
 * Windows 安装方法：
-* MacOS 安装方法：
+* MacOS 安装方法：安装homebrew，terminal输入
+```
+>> brew install ruby
+>> gem install rails
+>> bundle install
+```
 * Linux 安装方法：
 ### 下载项目并解压至某目录下
 ### Rails命令
