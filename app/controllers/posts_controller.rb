@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     if posts.empty?
       @posts = ding.concat(@posts.concat(temp))
     else
-      @posts = ding.concat(@posts.concat(temp))
+      @posts = ding.concat(posts.concat(@posts))
     end
     @posts = Kaminari.paginate_array(@posts).page(params[:page])
     if user_signed_in?
