@@ -1,17 +1,31 @@
-@media (min-width:320px){
+@media (min-width:320px) and (max-width:480px){
   .top-bar{
+    text-align: center;
+    width: 100%;
     background-image:linear-gradient(#1ad6fd,#1d62f0);
     z-index: 1;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     ul{
       background: none;
+      padding: 0px;
     }
   }
 
+  .top-bar-menu-container{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
   .menu{
-    padding-left: 21%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
     li{
-      font-size: 30px;
+      display: inline-block;
+      width: 19%;
+      text-align: center;
+      font-size: 20px;
       a{
         color:black;
         font-family: T-WenYue-XinQingNianTi-NC-W8;
@@ -46,17 +60,15 @@
   }
 
   .cover-image{
-    height:180px;
+    min-height:40px;
     width: 100%;
     padding: 0px;
     margin: 0px;
     .tieba-title{
       font-family: T-WenYue-XinQingNianTi;
-      margin-left: 22%;
-      padding-top: 80px;
       h1{
         font-family: T-WenYue-XinQingNianTi-NC-W8;
-        font-size: 65px;
+        font-size: 30px;
         color:white;
         font-weight: 200;
         color: #e0dfdc;
