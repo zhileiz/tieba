@@ -89,6 +89,9 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @mobile = @post
+    @mobile_replies = @post.replies.to_a.keep_if{|b| b.id != nil}
+    @replies = @post.replies
   end
 
   def jingping

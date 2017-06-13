@@ -1,4 +1,4 @@
-<div class="top-bar" id="header" style="margin-bottom:30px;">
+<div class="top-bar" id="header">
   <div class="cover-image">
     <%= link_to root_path do %>
     <div class="tieba-title">
@@ -6,7 +6,7 @@
     </div>
     <% end %>
   </div>
-  <div class="top-bar-menu-container">    
+  <div class="top-bar-menu-container">
     <ul class="menu">
       <li><%= link_to "看贴", root_path, class: "#{yield(:posts_active)}"%></li>
       <li><%= link_to "精品", jingping_path, class: "#{yield(:jing_active)}" %></li>

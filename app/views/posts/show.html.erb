@@ -5,7 +5,7 @@
 <% provide(:posts_active, "highlighted") %>
 <% end %>
 
-<div class="row">
+<div class="row non-mobile-show">
   <div class="columns small-11">
     <div class="post-title">
       <%=@post.user.username%> : <%= @post.title %>
@@ -21,7 +21,7 @@
           <p><%= @post.content.html_safe %></p>
         </div>
       </div>
-      <% @post.replies.each do |reply| %>
+      <% @replies.each do |reply| %>
         <% if reply.user == @post.user %>
         <div class="message-box left-img">
           <div class="picture">
@@ -69,3 +69,58 @@
   </div>
   <% end %>
 </div>
+
+<% @replies = @post.replies.first(@post.replies.size-1) %>
+
+    <div class="post-title">
+      <%=@post.user.username%> : <%= @post.title %>
+    </div>
+    <div class="chat-box">
+      <div class="message-box left-img">
+        <div class="picture">
+          <%= image_tag @post.user.avatar.url(:thumb) %>
+          <span><%= @post.user.username %></span>
+        </div>
+        <div class="message">
+          <p><%= @post.content.html_safe %></p>
+        </div>
+      </div>
+      <% @replies.each do |reply| %>
+        <% if reply.user == @post.user %>
+        <div class="message-box left-img">
+          <div class="picture">
+            <%= image_tag reply.user.avatar.url(:thumb) %>
+            <span><%=reply.user.username%></span>
+          </div>
+          <div class="message">
+            <p><%= raw(reply.content) %></p>
+          </div>
+        </div>
+        <% else %>
+        <div class="message-box right-img">
+          <div class="picture">
+            <%= image_tag reply.user.avatar.url(:thumb) %>
+            <span><%=reply.user.username%></span>
+          </div>
+          <div class="message">
+            <p><%= reply.content.html_safe %></p>
+          </div>
+          <div style="clear:both;"></div>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+    <% if (user_signed_in?) %>
+    <div class="mobile-new-button">
+      <a href="#mobile-new-form">
+        <div class="control registration-submit">
+          <div class="new-button">回</div>
+        </div>
+      </a>
+    </div>
+    <% end %>
+    <% if (user_signed_in?) %>
+      <div id="mobile-new-form" style="padding-left:3%; padding-right:2%;">
+        <%= render 'replies/form' %>
+      </div>
+    <% end %>

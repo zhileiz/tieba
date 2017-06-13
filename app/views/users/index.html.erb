@@ -3,10 +3,10 @@
 
 <div class = "row">
   <div class = "columns large-10"style="padding-bottom:10px;">
-    <h2 class="member-index-title">静如处子</h2>
+    <h2 class="member-index-title mobile-index-title">静如处子</h2>
   </div>
 </div>
-<div class = "row small-up-2 medium-up-3 large-up-4 user-roll">
+<div class = "row small-up-3 medium-up-3 large-up-4 user-roll">
   <% @admins.each do |user| %>
   <div class = "column column-block">
     <div class= "user-avatar">
@@ -23,10 +23,10 @@
 
 <div class = "row">
   <div class = "columns large-10" style="padding-bottom:10px;padding-top:15px;">
-    <h2 class="member-index-title">动如脱兔</h2>
+    <h2 class="member-index-title mobile-index-title">动如脱兔</h2>
   </div>
 </div>
-<div class = "row small-up-2 medium-up-3 large-up-4 user-roll">
+<div class = "row small-up-3 medium-up-3 large-up-4 user-roll">
   <% @users.each do |user| %>
   <div class = "column column-block">
     <div class= "user-avatar">
@@ -35,7 +35,7 @@
     <div class = "user-name">
       <%= user.username %>
       <% if current_user.admin == true %>
-      <span style="font-size:10px;"><%= user.validname %></span>
+      <span class="validname"><%= user.validname %></span>
       <% end %>
     </div>
   </div>

@@ -1,7 +1,7 @@
-<% provide(:page_title, "年级顶尖") %>
-<% provide(:jing_active, "highlighted") %>
+<% provide(:page_title, "顶尖") %>
+<% provide(:posts_active, "highlighted") %>
 
-<div class="row">
+<div class="row non-mobile-show">
   <div class="content-container columns small-11">
     <table>
       <thead>
@@ -45,17 +45,30 @@
                 <div class="post-index-title">
                   <h5>
                     <%= truncate(strip_tags(post.title), length:20)  %>
-                    <% if post.jing == true %>
-                      <div class="jing-tag" style="float:right;"> 精 </div>
-                    <% else %>
-                      <% if current_user.admin == true %>
-                      <div class="set-jing-btn">
-                        <%= link_to jing_post_path(post), method: :put do %>
+                    <div class="property-bar">
+                      <% if post.jing == true %>
+                      <span class="jing-tag" <%= %Q(style=padding-right:0px;) if post.sticky == true %>> 精 </span>
+                      <% else %>
+                          <% if user_signed_in? %>
+                            <% if current_user.admin == true %>
+                              <%= link_to jing_post_path(post), method: :put do %>
+                                <%=fa_icon "heart"%>
+                              <% end %>
+                            <% end %>
+                          <% end %>
+                      <% end %>
+                      <% if post.sticky == true %>
+                        <span class="ding-tag"> 顶 </span>
+                      <% else %>
+                        <% if user_signed_in? %>
+                          <% if current_user.admin == true %>
+                          <%= link_to stick_post_path(post), method: :put do %>
                           <%=fa_icon "toggle-up"%>
+                          <% end %>
+                          <% end %>
                         <% end %>
-                      </div>
                       <% end %>
-                      <% end %>
+                    </div>
                 </h5>
                   <p class="special-link">
                     <%= link_to post do %>
@@ -130,3 +143,94 @@
   <% end %>
 
 </div>
+
+
+<div class="row mobile-show">
+  <table class="mobile-filters">
+    <thead>
+      <tr>
+        <th class="text-center" id="trend-table">
+            <%=link_to indexbypop_path do%>
+                <%= fa_icon "sort-amount-desc", text:"跟帖/点赞" %>
+            <% end %>
+        </th>
+        <th class="text-center" id="title-table">
+          <%=link_to indexbypost_path do%>
+              <%= fa_icon "sort-amount-desc", text:"最新贴文" %>
+          <% end %>
+        </th>
+        <th class="text-center" id="reply-table">
+          <%=link_to indexbyreply_path do%>
+              <%= fa_icon "sort-amount-desc", text:"最新回复" %>
+          <% end %>
+        </th>
+      </tr>
+    </thead>
+  </table>
+  <% @posts.each do |post|%>
+  <div class="mobile-content-block">
+    <div class="post-index">
+      <%= link_to post do%>
+        <div class="post-avatar">
+          <%= image_tag post.user.avatar.url(:thumb) %>
+        </div>
+        <div class="post-index-title">
+          <h5>
+            <%= truncate(strip_tags(post.title), length:20)  %>
+            <div class="property-bar">
+              <% if post.jing == true %>
+                <span class="jing-tag" <%= %Q(style=padding-right:0px;) if post.sticky == true %>> 精 </span>
+              <% else %>
+                  <% if user_signed_in? %>
+                    <% if current_user.admin == true %>
+                      <%= link_to jing_post_path(post), method: :put do %>
+                        <%=fa_icon "heart"%>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+              <% end %>
+              <% if post.sticky == true %>
+                <span class="ding-tag"> 顶 </span>
+              <% else %>
+                <% if user_signed_in? %>
+                  <% if current_user.admin == true %>
+                  <%= link_to stick_post_path(post), method: :put do %>
+                  <%=fa_icon "toggle-up"%>
+                  <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+        </h5>
+          <p class="special-link">
+            <%= link_to post do %>
+            楼主: <%= post.user.username %>  &nbsp 时间: <%= post.created_at.to_s.first(19) %>
+            <% end %>
+          </p>
+        </div>
+        <div style="clear:both;"></div>
+      <% end %>
+      <div class="post-index-content">
+        <%= truncate(strip_tags(post.content.html_safe), length:140) %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <div class="pagination text-center">
+    <%= paginate @posts %>
+  </div>
+</div>
+<% if (user_signed_in?) %>
+<div class="mobile-new-button">
+  <a href="#mobile-new-form">
+    <div class="control registration-submit">
+      <div class="new-button">新</div>
+    </div>
+  </a>
+</div>
+<% end %>
+<% if (user_signed_in?) %>
+  <div id="mobile-new-form" style="padding-left:3%; padding-right:2%;">
+    <%= render 'form', post: @post %>
+  </div>
+<% end %>

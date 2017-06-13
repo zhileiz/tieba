@@ -1,4 +1,12 @@
 @media (min-width:320px) and (max-width:480px){
+  .non-mobile-show{
+    display: none;
+  }
+
+  .mobile-show{
+    z-index: 0;
+  }
+
   .top-bar{
     text-align: center;
     width: 100%;
@@ -23,7 +31,7 @@
     width: 100%;
     li{
       display: inline-block;
-      width: 19%;
+      width: 15%;
       text-align: center;
       font-size: 20px;
       a{
@@ -31,6 +39,7 @@
         font-family: T-WenYue-XinQingNianTi-NC-W8;
         color: #e0dfdc;
         letter-spacing: .1em;
+        padding: 0px;
       }
       a:hover{
         color:white;
@@ -78,6 +87,12 @@
     }
   }
 
+  .mobile-content-block{
+    width: 94%;
+    border-bottom: 1px solid #dadae2;
+    margin: 1% 3%;
+  }
+
   .content-container{
     min-height: 100%;
     margin-top: -2px;
@@ -91,12 +106,12 @@
   }
 
   #title-table{
-    width: 65%;
+    width: 33.3%;
     font-size: 16px;
   }
 
   #reply-table{
-    width: 20%;
+    width: 33.3%;
     font-size: 16px;
   }
 
@@ -178,14 +193,14 @@
 
   .message-box .picture{
     float:left;
-    width:70px;
+    width:40px;
     display:block;
     padding-right:10px;
   }
 
   .picture img{
-    width:55px;
-    height:55px;
+    width:30px;
+    height:30px;
     border-radius:50%;
   }
 
@@ -206,7 +221,7 @@
     box-shadow: 0 1px 1px rgba(0,0,0,.04);
     position:relative;
     min-height: 40px;
-    max-width: 90%;
+    max-width: 85%;
     min-width: 45%;
     p{
       margin:0;
@@ -279,8 +294,16 @@
     }
   }
 
+  .mobile-new-button{
+    position: fixed;
+    z-index: 1;
+    top: 85%;
+    right: 10%;
+  }
+
   .post-title{
     background-color: #1CA5F8;
+    line-height: 26px;
     min-height: 30px;
     text-align: center;
     padding: 10px;
@@ -298,12 +321,14 @@
     }
     .property-bar{
       float: right;
+      position:relative;
     }
     .jing-tag{
       font-size: 15px;
       padding-left: 5px;
       padding-top:4px;
       padding-bottom: 2px;
+      padding-right: 5px;
       height:25px;
       width:25px;
       border-radius: 20%;
@@ -420,20 +445,23 @@
   }
 
   .user-roll{
+    .column{
+      text-align: center;
+    }
     img{
       width: 60px;
       height: 60px;
       border-radius: 50%;
     }
-    .user-avatar{
-      float: left;
-    }
+
     .user-name{
-      float: left;
-      font-size: 20px;
+      font-size: 12px;
       font-family: FZZZHUNHJW;
       padding: 10px;
-      padding-top: 20px;
+      .validname{
+        font-size: 8px;
+        color: #343433;
+      }
     }
   }
 
@@ -455,4 +483,23 @@
     font-weight: 100;
     }
   }
+
+  .mce-edit-area{
+    height: 200px;
+  }
+  .mce-branding-powered-by{
+    display: none;
+  }
+  #post_content_ifr{
+    height: 300px;
+  }
+  .mce-tinymce{
+    height: 300px;
+  }
+}
+
+.mobile-index-title{
+  font-size: 30px;
+  text-align: center;
+  margin-top: 20px;
 }
