@@ -70,12 +70,16 @@
   <% end %>
 </div>
 
+<% if @post.replies.size > 0 %>
 <% @replies = @post.replies.first(@post.replies.size-1) %>
+<% else %>
+<% @replies = @post.replies %>
+<% end %>
 
-    <div class="post-title">
+    <div class="post-title mobile-show">
       <%=@post.user.username%> : <%= @post.title %>
     </div>
-    <div class="chat-box">
+    <div class="chat-box mobile-show">
       <div class="message-box left-img">
         <div class="picture">
           <%= image_tag @post.user.avatar.url(:thumb) %>
@@ -111,7 +115,7 @@
       <% end %>
     </div>
     <% if (user_signed_in?) %>
-    <div class="mobile-new-button">
+    <div class="mobile-new-button mobile-show">
       <a href="#mobile-new-form">
         <div class="control registration-submit">
           <div class="new-button">回</div>
@@ -120,7 +124,7 @@
     </div>
     <% end %>
     <% if (user_signed_in?) %>
-      <div id="mobile-new-form" style="padding-left:3%; padding-right:2%;">
+      <div id="mobile-new-form" class="mobile-show" style="padding-left:3%; padding-right:2%;">
         <%= render 'replies/form' %>
       </div>
     <% end %>
